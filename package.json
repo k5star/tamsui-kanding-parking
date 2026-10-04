@@ -1,0 +1,16 @@
+{
+  "name": "tamsui-kanding5-parking",
+  "private": true,
+  "version": "3.0.0",
+  "description": "淡水崁頂五路停車場 官方網站（純靜態 HTML/CSS，無框架）",
+  "scripts": {
+    "build": "python3 build.py",
+    "lint": "htmlhint dist/index.html",
+    "test": "python3 tests/check_site.py",
+    "serve": "python3 -m http.server 8080 --directory dist"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "htmlhint": "^1.1.4"
+  }
+}

@@ -1,78 +1,457 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>淡水崁頂五路停車場</title>
-<meta name="description" content="淡水崁頂五路停車場：觀海長堤、水管公園附近停車。前10分鐘免費，平日每小時10元、假日每小時20元，支援LINE Pay。海洋大學站步行約8-10分鐘。">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>淡水崁頂五路停車場｜淡水夕陽・觀海長堤附近停車</title>
+<meta name="description" content="淡水崁頂五路停車場，鄰近淡水海岸、觀海長堤及自行車道。提供平價停車、每日最高80元，適合看海、賞夕陽、騎自行車及淡水旅遊停車。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0b4f7c">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="淡水崁頂五路停車場">
+<meta property="og:title" content="淡水崁頂五路停車場｜淡水夕陽・觀海長堤附近停車">
+<meta property="og:description" content="平日每小時10元、假日每小時20元、每日最高80元，前10分鐘免費。停好車，輕鬆看海、賞夕陽、騎單車。">
+<meta name="twitter:card" content="summary_large_image">
+<!--SITE_URL_BLOCK-->
+<link rel="canonical" href="{{SITE_URL}}/">
+<meta property="og:url" content="{{SITE_URL}}/">
+<meta property="og:image" content="{{SITE_URL}}/assets/img/map-1000.webp">
+<!--/SITE_URL_BLOCK-->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b4f7c'/%3E%3Ctext x='32' y='46' font-size='40' font-family='Arial' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<!-- TODO: 電話、經緯度(geo)、營業時間(openingHours) 尚未確認，確認後再加入下方 JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["ParkingFacility", "LocalBusiness"],
+  "name": "淡水崁頂五路停車場",
+  "description": "鄰近淡水海岸、金色水岸觀海長堤及自行車道的平價停車場。",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "崁頂五路",
+    "addressLocality": "淡水區",
+    "addressRegion": "新北市",
+    "addressCountry": "TW"
+  },
+  "hasMap": "https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac",
+  "priceRange": "NT$10–20／小時，每日最高 NT$80",
+  "paymentAccepted": "LINE Pay, ATM"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "停車費多少？", "acceptedAnswer": {"@type": "Answer", "text": "平日每小時 10 元、假日每小時 20 元，每日最高 80 元。"}},
+    {"@type": "Question", "name": "有免費時間嗎？", "acceptedAnswer": {"@type": "Answer", "text": "前 10 分鐘免費。"}},
+    {"@type": "Question", "name": "可以使用 LINE Pay 嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可依現場提供的付款方式完成繳費。"}},
+    {"@type": "Question", "name": "附近適合看夕陽嗎？", "acceptedAnswer": {"@type": "Answer", "text": "周邊鄰近淡水海岸及觀海區域，適合安排散步、騎車及欣賞夕陽。"}},
+    {"@type": "Question", "name": "附近可以騎自行車嗎？", "acceptedAnswer": {"@type": "Answer", "text": "附近有自行車道及 YouBike，可搭配停車安排淡水海岸行程。"}}
+  ]
+}
+</script>
+
 <style>
-:root{--bg:#f4f8fb;--card:#fff;--ink:#1a2b3c;--muted:#5a6b7c;--brand:#1565c0;--brand-ink:#fff;--accent:#2e7d32;--line:#dde6ee}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1720;--card:#17222e;--ink:#e6edf3;--muted:#9fb0c0;--brand:#64a8f0;--brand-ink:#0f1720;--accent:#7cc47f;--line:#2a3a4a}}
-:root[data-theme="dark"]{--bg:#0f1720;--card:#17222e;--ink:#e6edf3;--muted:#9fb0c0;--brand:#64a8f0;--brand-ink:#0f1720;--accent:#7cc47f;--line:#2a3a4a}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
-.wrap{max-width:960px;margin:0 auto;padding:0 16px}
-header{background:var(--brand);color:var(--brand-ink);padding:48px 0 40px}
-header h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.3}
-header p{margin-top:8px;font-size:1.1rem;opacity:.95}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.tags span{border:1px solid currentColor;border-radius:999px;padding:2px 12px;font-size:.9rem}
-section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
-h2{font-size:1.3rem;margin-bottom:14px}
-.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.price div{border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center}
-.price b{display:block;font-size:1.8rem;color:var(--brand)}
-.price small{color:var(--muted)}
-ul{padding-left:1.2em}
-li{margin:6px 0}
-.muted{color:var(--muted)}
-img{width:100%;height:auto;border-radius:10px;display:block}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-.btn{display:inline-block;background:var(--brand);color:var(--brand-ink);text-decoration:none;font-weight:600;padding:12px 22px;border-radius:8px}
-footer{text-align:center;color:var(--muted);font-size:.9rem;padding:24px 16px 40px}
+:root{
+  --bg:#f6f9fb; --surface:#ffffff; --surface-2:#eef5f9; --ink:#14273a; --muted:#4d6275; --line:#d9e4ec;
+  --sea:#0b4f7c; --sea-ink:#ffffff; --sun:#c2410c; --sun-ink:#ffffff; --sun-soft:#fff1e6; --leaf:#2f7a3b;
+  --hero-a:#fde7d3; --hero-b:#fbd3c0; --hero-c:#dbeefa;
+  --radius:16px; --shadow:0 6px 20px rgba(20,39,58,.08);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1720; --surface:#14212d; --surface-2:#1a2a38; --ink:#e7eef4; --muted:#a3b4c3; --line:#26394a;
+  --sea:#7cc0ee; --sea-ink:#08131c; --sun:#ff9a5c; --sun-ink:#1a0d05; --sun-soft:#2a1c14; --leaf:#86c991;
+  --hero-a:#2a1d24; --hero-b:#3a2430; --hero-c:#13283a; --shadow:0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#0d1720; --surface:#14212d; --surface-2:#1a2a38; --ink:#e7eef4; --muted:#a3b4c3; --line:#26394a;
+  --sea:#7cc0ee; --sea-ink:#08131c; --sun:#ff9a5c; --sun-ink:#1a0d05; --sun-soft:#2a1c14; --leaf:#86c991;
+  --hero-a:#2a1d24; --hero-b:#3a2430; --hero-c:#13283a; --shadow:0 6px 20px rgba(0,0,0,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--sea)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);padding:8px 12px;z-index:100}
+.skip:focus{left:8px}
+section{padding:48px 0;scroll-margin-top:72px}
+.eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.08em;color:var(--sun)}
+.sec-title{font-size:clamp(1.45rem,4.6vw,2rem);margin:6px 0 12px}
+.sec-lead{color:var(--muted);max-width:640px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border-radius:999px;
+  font-weight:700;font-size:1.05rem;text-decoration:none;border:2px solid transparent;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-primary{background:var(--sun);color:var(--sun-ink)}
+.btn-secondary{background:var(--surface);color:var(--sea);border-color:var(--sea)}
+.btn svg{width:22px;height:22px;flex:none}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none;font-size:1.02rem}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--sea);color:var(--sea-ink);display:grid;place-items:center;font-weight:900}
+.top-nav{display:none;gap:4px}
+.top-nav a{color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:.95rem}
+.top-nav a:hover{background:var(--surface-2)}
+.header-cta{display:none;min-height:42px;padding:8px 18px;font-size:.95rem}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:28px 0 0;background:linear-gradient(180deg,var(--hero-a) 0%,var(--hero-b) 45%,var(--hero-c) 100%)}
+.hero-grid{display:grid;gap:20px}
+.hero h1{font-size:clamp(1.9rem,7.4vw,3.2rem);letter-spacing:.01em}
+.hero .sub{font-size:clamp(1.1rem,4.2vw,1.45rem);font-weight:700;color:var(--sea);margin-top:8px}
+.hero .lead{color:var(--muted);margin-top:10px;max-width:560px}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:16px;padding:0;list-style:none}
+.quick li{background:var(--surface);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow)}
+.quick small{display:block;color:var(--muted);font-size:.8rem}
+.quick b{font-size:1.15rem}
+.hero-addr{display:flex;gap:6px;align-items:flex-start;margin-top:12px;color:var(--ink);font-weight:600}
+.hero-addr svg{width:20px;height:20px;flex:none;margin-top:3px;color:var(--sun)}
+.hero-cta{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.hero-art{margin-top:8px}
+.hero-art svg{width:100%;height:auto;display:block;border-radius:20px 20px 0 0;box-shadow:var(--shadow)}
+
+/* features */
+.cards{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.feature .ico{font-size:1.7rem;line-height:1}
+.feature h3{font-size:1.05rem;margin-top:8px}
+.feature p{color:var(--muted);font-size:.95rem;margin-top:4px}
+.feature:last-child{grid-column:1/-1}
+
+/* pricing */
+#pricing{background:var(--surface-2)}
+.price-grid{display:grid;gap:12px;margin-top:20px;grid-template-columns:repeat(2,1fr)}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
+.price .label{color:var(--muted);font-size:.9rem;font-weight:600}
+.price .val{font-size:clamp(1.35rem,5.5vw,1.8rem);font-weight:800;color:var(--sea);margin-top:2px}
+.price .val small{font-size:.55em;font-weight:700;color:var(--muted)}
+.price.hl{border:2px solid var(--sun);background:var(--sun-soft)}
+.price.hl .val{color:var(--sun)}
+.price.wide{grid-column:1/-1}
+.note{margin-top:14px;color:var(--muted);font-size:.9rem}
+
+/* spots */
+.spots{display:grid;gap:14px;margin-top:20px}
+.spot{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.spot img,.spot .art{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--surface-2)}
+.spot-body{padding:14px 16px 16px}
+.spot h3{font-size:1.1rem}
+.spot p{color:var(--muted);font-size:.95rem;margin-top:4px}
+.hint{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:700;color:var(--leaf);background:color-mix(in srgb,var(--leaf) 12%,transparent);padding:3px 10px;border-radius:999px}
+
+/* sunset */
+.sunset{position:relative;color:#fff;overflow:hidden;background:linear-gradient(180deg,#3b2a5a 0%,#b5476a 40%,#f08a4b 70%,#f7c46c 100%)}
+.sunset .wrap{position:relative;z-index:1}
+.sunset .eyebrow{color:#ffe2c4}
+.sunset h2{color:#fff}
+.sunset p{color:#fff;max-width:560px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.sunset .btn{margin-top:20px;background:#fff;color:#8a2c0b}
+.sunset svg.waves{position:absolute;left:0;right:0;bottom:0;width:100%;height:90px}
+
+/* bike flow */
+.flow{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:22px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);list-style:none}
+.flow li{display:flex;flex-direction:column;align-items:center;font-size:clamp(1.5rem,7vw,2.2rem);line-height:1}
+.flow li span{font-size:.75rem;color:var(--muted);margin-top:6px;font-weight:600;white-space:nowrap}
+.flow i{font-style:normal}
+.flow .arr{font-size:1rem;color:var(--muted)}
+
+/* map */
+.map-grid{display:grid;gap:16px;margin-top:20px}
+.map-embed{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface-2);aspect-ratio:4/3}
+.map-embed iframe{width:100%;height:100%;border:0;display:block}
+.map-cta{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.map-cta .btn{width:100%;margin-top:14px;min-height:58px;font-size:1.15rem}
+.illus{margin:16px 0 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.illus img{width:100%}
+.illus figcaption{font-size:.85rem;color:var(--muted);padding:8px 12px;background:var(--surface)}
+
+/* faq */
+.faq{margin-top:18px;display:grid;gap:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 16px}
+.faq summary{cursor:pointer;font-weight:700;padding:16px 28px 16px 0;list-style:none;position:relative;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:12px;font-size:1.4rem;color:var(--sea)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 16px;color:var(--muted)}
+
+/* footer */
+footer{background:#0b2233;color:#d6e3ec;padding:36px 0 28px;margin-top:8px}
+footer a{color:#fff}
+footer .f-name{font-weight:800;font-size:1.15rem;color:#fff}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0}
+footer nav a{text-decoration:none;padding:6px 0}
+footer nav a:hover{text-decoration:underline}
+footer .disc{font-size:.85rem;color:#b9cad6}
+footer .copy{font-size:.8rem;color:#9fb3c2;margin-top:10px}
+
+/* sticky mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1.6fr 1fr;gap:8px;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(20,39,58,.12)}
+.mbar .btn{min-height:54px;font-size:1.05rem;padding:10px 12px}
+
+@media (min-width:600px){
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .feature:last-child{grid-column:auto}
+  .price-grid{grid-template-columns:repeat(3,1fr)}
+  .spots{grid-template-columns:repeat(2,1fr)}
+  .quick{grid-template-columns:repeat(4,1fr)}
+  .hero-cta{flex-direction:row}
+}
+@media (min-width:768px){
+  section{padding:64px 0}
+  .top-nav{display:flex}
+  .header-cta{display:inline-flex}
+  .map-grid{grid-template-columns:1.4fr 1fr;align-items:start}
+  .map-embed{aspect-ratio:auto;height:100%;min-height:360px}
+}
+@media (min-width:1024px){
+  body{padding-bottom:0}
+  .mbar{display:none}
+  .hero{padding-top:56px}
+  .hero-grid{grid-template-columns:1.1fr 1fr;align-items:end}
+  .hero-text{padding-bottom:48px}
+  .cards{grid-template-columns:repeat(5,1fr)}
+  .spots{grid-template-columns:repeat(3,1fr)}
+  .price-grid{grid-template-columns:repeat(6,1fr)}
+  .price.wide{grid-column:span 2}
+  .price{grid-column:span 2}
+}
+@media (max-width:767px){.top-nav,.header-cta{display:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">跳到主要內容</a>
 
-<header><div class="wrap">
-  <h1>淡水崁頂五路停車場</h1>
-  <p>觀海長堤附近停車・水管公園附近停車</p>
-  <div class="tags"><span>前10分鐘免費</span><span>支援 LINE Pay</span><span>海洋大學站步行約8-10分鐘</span></div>
-</div></header>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="淡水崁頂五路停車場 回到頁首"><span class="brand-mark" aria-hidden="true">P</span>淡水崁頂五路停車場</a>
+    <nav class="top-nav" aria-label="主選單">
+      <a href="#pricing">停車費率</a><a href="#spots">周邊景點</a><a href="#map">交通導航</a><a href="#faq">常見問題</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">立即導航</a>
+  </div>
+</header>
 
-<main class="wrap">
-  <section>
-    <h2>收費方式</h2>
-    <div class="price">
-      <div><small>入場</small><b>前10分鐘免費</b></div>
-      <div><small>平日</small><b>10元 / 小時</b></div>
-      <div><small>假日</small><b>20元 / 小時</b></div>
+<main id="main">
+<!-- 01 Hero -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">淡水海邊停車・觀海長堤停車</p>
+      <h1 id="hero-title">淡水崁頂五路停車場</h1>
+      <p class="sub">停好車，輕鬆看海、賞夕陽、騎單車</p>
+      <p class="lead">鄰近淡水海岸、金色水岸觀海長堤及自行車道，適合散步、親子出遊、騎自行車與欣賞夕陽。</p>
+      <ul class="quick" aria-label="停車費率重點">
+        <li><small>平日</small><b>$10/時</b></li>
+        <li><small>假日</small><b>$20/時</b></li>
+        <li><small>每日最高</small><b>$80</b></li>
+        <li><small>前10分鐘</small><b>免費</b></li>
+      </ul>
+      <p class="hero-addr"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>新北市淡水區崁頂五路（淡海新市鎮）</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4ZM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5Z"/></svg>立即導航</a>
+        <a class="btn btn-secondary" href="#pricing">查看停車費率</a>
+      </div>
     </div>
-    <p class="muted" style="margin-top:12px">付款方式：支援 LINE Pay。實際收費以現場公告為準。</p>
-  </section>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc6ea"/><stop offset=".6" stop-color="#f6c8a8"/><stop offset="1" stop-color="#fbb98a"/></linearGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b95c9"/><stop offset="1" stop-color="#1d5f8f"/></linearGradient>
+          <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3c4"/><stop offset=".6" stop-color="#ffb35c"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="600" height="300" fill="url(#sky)"/>
+        <circle cx="420" cy="150" r="90" fill="url(#sun)"/>
+        <circle cx="420" cy="150" r="42" fill="#ffd27a"/>
+        <path d="M0 160h600v140H0z" fill="url(#sea)"/>
+        <path d="M330 175h180M360 195h120M390 215h60" stroke="#ffd27a" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+        <path d="M0 230c80-14 160-14 240 0s160 14 240 0 120-10 120-10v80H0z" fill="#e9d3a8"/>
+        <path d="M0 252c90-10 190-10 300 0s210 10 300 0v48H0z" fill="#c44a3a"/>
+        <g stroke="#6b3b22" stroke-width="5" stroke-linecap="round"><path d="M0 238h600"/><path d="M30 238v26M110 238v26M190 238v26M270 238v26M350 238v26M430 238v26M510 238v26M590 238v26"/></g>
+        <g transform="translate(150 246)" fill="none" stroke="#14273a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="0" cy="22" r="16"/><circle cx="58" cy="22" r="16"/><path d="M0 22 18 -4h28L58 22M18 -4l12 26h0l16-26M30 22 22 -12h-8M46 -4l4-10h8"/>
+        </g>
+        <path d="M60 120q10-8 20 0q10-8 20 0" stroke="#5a4a5e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M130 90q8-6 16 0q8-6 16 0" stroke="#5a4a5e" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>位置與交通</h2>
-    <p><b>地址：</b>新北市淡水區崁頂五路</p>
-    <ul>
-      <li>從海洋大學站沿濱海路二段步行約 8–10 分鐘（約 650 公尺）</li>
-      <li>鄰近 YouBike 2.0 站點、淡江教會淡海堂、公二十三號公園</li>
-    </ul>
-    <div class="btns"><a class="btn" href="https://maps.app.goo.gl/32ponPe4Waytzyff7" target="_blank" rel="noopener">Google 地圖導航</a></div>
-  </section>
+<!-- 02 Features -->
+<section id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <p class="eyebrow">停車場特色</p>
+    <h2 class="sec-title" id="features-title">淡水平價停車場，停車簡單又安心</h2>
+    <div class="cards">
+      <article class="card feature"><div class="ico" aria-hidden="true">🚗</div><h3>平價停車</h3><p>平日每小時 10 元<br>假日每小時 20 元</p></article>
+      <article class="card feature"><div class="ico" aria-hidden="true">💰</div><h3>每日最高</h3><p>每日最高 80 元</p></article>
+      <article class="card feature"><div class="ico" aria-hidden="true">⏱️</div><h3>前 10 分鐘免費</h3><p>短暫停留更方便</p></article>
+      <article class="card feature"><div class="ico" aria-hidden="true">📱</div><h3>行動付款</h3><p>支援 LINE Pay 等付款方式</p></article>
+      <article class="card feature"><div class="ico" aria-hidden="true">🚧</div><h3>免柵欄</h3><p>快速進出，不需取票</p></article>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>停好車，去看海</h2>
-    <p>前往淡水金色水岸觀海長堤，停車便利，適合看海、散步、騎自行車。</p>
-    <ul>
-      <li><b>金色水岸觀海長堤自行車道</b>：沿海騎車、散步</li>
-      <li><b>水管公園</b>：海邊休憩</li>
-      <li><b>海尾仔海灘</b>：沿自行車道往北可達</li>
-    </ul>
-    <img src="map.jpg" alt="淡水崁頂五路停車場周邊景點地圖：海洋大學站步行約650公尺可達，鄰近水管公園、觀海長堤自行車道、海尾仔海灘、淡江教會淡海堂與YouBike站">
-  </section>
+<!-- 03 Pricing -->
+<section id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <p class="eyebrow">停車費率</p>
+    <h2 class="sec-title" id="pricing-title">崁頂五路停車場收費一覽</h2>
+    <div class="price-grid">
+      <div class="price"><div class="label">平日</div><div class="val">NT$10 <small>/ 小時</small></div></div>
+      <div class="price"><div class="label">假日</div><div class="val">NT$20 <small>/ 小時</small></div></div>
+      <div class="price hl"><div class="label">每日最高</div><div class="val">NT$80</div></div>
+      <div class="price"><div class="label">月租</div><div class="val">NT$1,000</div></div>
+      <div class="price hl"><div class="label">前 10 分鐘</div><div class="val">免費</div></div>
+      <div class="price"><div class="label">付款方式</div><div class="val" style="font-size:1.15rem">LINE Pay / ATM 等</div></div>
+    </div>
+    <p class="note">※ 實際收費及付款方式仍以現場公告為準。</p>
+  </div>
+</section>
+
+<!-- 04 Spots -->
+<section id="spots" aria-labelledby="spots-title">
+  <div class="wrap">
+    <p class="eyebrow">淡水新景點・周邊景點</p>
+    <h2 class="sec-title" id="spots-title">停好車，開始你的淡水海岸小旅行</h2>
+    <p class="sec-lead">把車停在崁頂五路，就能用散步或騎單車的方式，串起淡水海邊的熱門景點。</p>
+    <div class="spots">
+      <article class="spot">
+        <img src="assets/img/spot-promenade.webp" width="302" height="136" loading="lazy" decoding="async" alt="淡水金色水岸觀海長堤，紅色步道沿著海岸延伸，適合散步與騎車">
+        <div class="spot-body"><h3>金色水岸觀海長堤</h3><p>沿著海岸延伸的觀海步道，一邊散步一邊看海，是淡水觀海長堤停車後的首選。</p><span class="hint">🚶 步行・🚲 自行車</span></div>
+      </article>
+      <article class="spot">
+        <img src="assets/img/spot-coast.webp" width="184" height="94" loading="lazy" decoding="async" alt="淡水海岸的海景與遠方城市天際線">
+        <div class="spot-body"><h3>淡水海岸</h3><p>開闊的海景與海風，適合放慢腳步，享受淡水海邊的悠閒時光。</p><span class="hint">🚶 步行前往</span></div>
+      </article>
+      <article class="spot">
+        <img src="assets/img/spot-bikepath.webp" width="270" height="260" loading="lazy" decoding="async" alt="淡水海岸自行車道沿線綠樹與騎行路線示意圖">
+        <div class="spot-body"><h3>自行車道</h3><p>沿海規劃的自行車道，路線平順、景色開闊，親子或情侶騎車都很適合。</p><span class="hint">🚲 自行車</span></div>
+      </article>
+      <article class="spot">
+        <img src="assets/img/spot-beach.webp" width="286" height="116" loading="lazy" decoding="async" alt="淡水海尾仔沙灘的礁石、沙灘與海景">
+        <div class="spot-body"><h3>海尾仔沙灘</h3><p>礁石與沙灘交錯的海岸景觀，可沿著自行車道前往，拍照、看海都好看。</p><span class="hint">🚲 建議騎自行車前往</span></div>
+      </article>
+      <article class="spot">
+        <img src="assets/img/spot-youbike.webp" width="305" height="136" loading="lazy" decoding="async" alt="停車場附近的 YouBike 2.0 租借站">
+        <div class="spot-body"><h3>YouBike 站點</h3><p>附近設有 YouBike 2.0 站點，停好車就能租車出發，不必自己載單車。</p><span class="hint">🚶 步行前往</span></div>
+      </article>
+      <article class="spot">
+        <svg class="art" viewBox="0 0 320 180" role="img" aria-label="淡水夕陽觀景插圖：夕陽落入海面"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a3d7a"/><stop offset=".55" stop-color="#f08a4b"/><stop offset="1" stop-color="#f7c46c"/></linearGradient></defs><rect width="320" height="180" fill="url(#sk)"/><circle cx="160" cy="112" r="34" fill="#ffe08a"/><rect y="112" width="320" height="68" fill="#2d5d86"/><path d="M110 126h100M128 140h64M146 154h28" stroke="#ffe08a" stroke-width="4" stroke-linecap="round" opacity=".8"/></svg>
+        <div class="spot-body"><h3>淡水夕陽觀景區域</h3><p>傍晚沿著海岸走走，就能欣賞海上夕陽，淡水看夕陽停車就選這裡。</p><span class="hint">🚶 步行・🚲 自行車</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Sunset -->
+<section class="sunset" id="sunset" aria-labelledby="sunset-title">
+  <div class="wrap">
+    <p class="eyebrow">淡水夕陽停車</p>
+    <h2 class="sec-title" id="sunset-title">來淡水，看一場海邊夕陽</h2>
+    <p>傍晚停好車後，可以沿著海岸散步或騎自行車，欣賞淡水海景與夕陽，輕鬆安排半日或一日小旅行。</p>
+    <a class="btn" href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">導航到停車場</a>
+  </div>
+  <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c120 20 240 20 360 0s240-20 360 0 240 20 360 0 240-20 360 0v50H0z" fill="#2d5d86" opacity=".55"/><path d="M0 60c160 14 320 14 480 0s320-14 480 0 320 14 480 0v30H0z" fill="#1d4a6e"/></svg>
+</section>
+
+<!-- 06 Bike -->
+<section id="bike" aria-labelledby="bike-title">
+  <div class="wrap">
+    <p class="eyebrow">淡水自行車道停車</p>
+    <h2 class="sec-title" id="bike-title">停車＋騎車，慢遊淡水</h2>
+    <p class="sec-lead">停好汽車後，可步行前往附近自行車道或 YouBike 站點，沿著淡水海岸慢慢騎行。</p>
+    <ol class="flow" aria-label="行程流程：開車、停車、騎單車、看海、賞夕陽">
+      <li><i aria-hidden="true">🚗</i><span>開車</span></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><i aria-hidden="true">🅿️</i><span>停車</span></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><i aria-hidden="true">🚲</i><span>騎單車</span></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><i aria-hidden="true">🌊</i><span>看海</span></li>
+      <li class="arr" aria-hidden="true">→</li>
+      <li><i aria-hidden="true">🌅</i><span>賞夕陽</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 07 Map -->
+<section id="map" aria-labelledby="map-title">
+  <div class="wrap">
+    <p class="eyebrow">交通導航</p>
+    <h2 class="sec-title" id="map-title">淡水崁頂五路停車場在哪裡？</h2>
+    <div class="map-grid">
+      <div class="map-embed">
+        <iframe title="淡水崁頂五路停車場 Google 地圖" src="https://www.google.com/maps?q=%E6%B7%A1%E6%B0%B4%E5%B4%81%E9%A0%82%E4%BA%94%E8%B7%AF%E5%81%9C%E8%BB%8A%E5%A0%B4&amp;hl=zh-TW&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="map-cta">
+        <h3>新北市淡水區崁頂五路</h3>
+        <p class="note" style="margin-top:6px">位於淡海新市鎮，鄰近金色水岸觀海長堤、水管公園與自行車道。</p>
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4ZM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5Z"/></svg>Google Maps 立即導航</a>
+      </div>
+    </div>
+    <figure class="illus">
+      <picture>
+        <source type="image/avif" srcset="assets/img/map-640.avif 640w, assets/img/map-1000.avif 1000w, assets/img/map-1448.avif 1448w" sizes="(min-width:1120px) 1088px, 100vw">
+        <source type="image/webp" srcset="assets/img/map-640.webp 640w, assets/img/map-1000.webp 1000w, assets/img/map-1448.webp 1448w" sizes="(min-width:1120px) 1088px, 100vw">
+        <img src="assets/img/map-1000.webp" width="1000" height="750" loading="lazy" decoding="async" alt="淡水崁頂五路停車場周邊景點地圖：海洋大學站、觀海長堤自行車道、水管公園、海尾仔海灘、淡江教會淡海堂與 YouBike 站點位置">
+      </picture>
+      <figcaption>周邊景點示意圖（非實際比例，實際路線請以 Google 地圖為準）</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 08 FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <p class="eyebrow">常見問題</p>
+    <h2 class="sec-title" id="faq-title">淡水停車常見問題</h2>
+    <div class="faq">
+      <details><summary>停車費多少？</summary><p>平日每小時 10 元、假日每小時 20 元，每日最高 80 元。</p></details>
+      <details><summary>有免費時間嗎？</summary><p>前 10 分鐘免費。</p></details>
+      <details><summary>可以使用 LINE Pay 嗎？</summary><p>可依現場提供的付款方式完成繳費。</p></details>
+      <details><summary>附近適合看夕陽嗎？</summary><p>周邊鄰近淡水海岸及觀海區域，適合安排散步、騎車及欣賞夕陽。</p></details>
+      <details><summary>附近可以騎自行車嗎？</summary><p>附近有自行車道及 YouBike，可搭配停車安排淡水海岸行程。</p></details>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>© 2026 淡水崁頂五路停車場</footer>
+<!-- 09 Footer -->
+<footer>
+  <div class="wrap">
+    <p class="f-name">淡水崁頂五路停車場</p>
+    <nav aria-label="頁尾選單">
+      <a href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">Google Maps 導航</a>
+      <a href="#features">停車資訊</a>
+      <a href="#pricing">收費資訊</a>
+      <a href="#spots">周邊景點</a>
+    </nav>
+    <p class="disc">實際停車費率、付款方式及相關規定，以現場最新公告為準。</p>
+    <p class="copy">© 2026 淡水崁頂五路停車場</p>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="快速操作">
+  <a class="btn btn-primary" href="https://maps.app.goo.gl/ASsbAQvR1QARp5GZ9?g_st=ac" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4ZM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5Z"/></svg>立即導航</a>
+  <a class="btn btn-secondary" href="#pricing">停車費率</a>
+</nav>
 </body>
 </html>
