@@ -9,6 +9,12 @@ site = os.environ.get('SITE_URL', '').rstrip('/')
 html = open(os.path.join(SRC, 'index.html'), encoding='utf-8').read()
 block = re.compile(r'<!--SITE_URL_BLOCK-->\n(.*?)<!--/SITE_URL_BLOCK-->\n', re.S)
 html = block.sub(lambda m: m.group(1).replace('{{SITE_URL}}', site) if site else '', html)
+if site:  # add url to the first JSON-LD (ParkingFacility) only when the real domain is known
+    import json
+    ld = re.compile(r'(<script type="application/ld\+json">\n)(.*?)(\n</script>)', re.S)
+    m = ld.search(html)
+    data = json.loads(m.group(2)); data['url'] = site + '/'
+    html = html[:m.start(2)] + json.dumps(data, ensure_ascii=False, indent=2) + html[m.end(2):]
 shutil.rmtree(DIST, ignore_errors=True)
 os.makedirs(os.path.join(DIST, 'assets/img'))
 open(os.path.join(DIST, 'index.html'), 'w', encoding='utf-8').write(html)
