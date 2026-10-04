@@ -13,8 +13,9 @@
 | 網站名稱 | 淡水崁頂五路停車場 |
 | 網站用途 | 淡水海岸旅遊 × 停車資訊 Landing Page，同時是 Google Ads 的正式到達網頁 |
 | 本機工作資料夾 | `D:\github上傳夾\tamsui-kanding-parking` |
-| GitHub | https://github.com/k5star/tamsui-kanding-parking （Private） |
-| 正式分支 | `main`（push 到 main 會觸發 Cloudflare Pages 自動部署） |
+| GitHub | https://github.com/k5star/tamsui-kanding-parking （Public） |
+| 正式網站 | https://k5star.github.io/tamsui-kanding-parking/ （GitHub Pages） |
+| 正式分支 | `main`（push 到 main 會觸發 GitHub Actions 自動部署到 GitHub Pages） |
 | 技術 | 純靜態 HTML + CSS，無框架，頁面不需要 JavaScript |
 | 建置 | `npm run build` → 執行 `python3 build.py` → 輸出 `dist/` |
 | 主要使用者 | 開車到淡水遊玩的旅客，**手機優先（Mobile First）** |
@@ -55,6 +56,7 @@ tests/check_build.py    ← SITE_URL 建置測試（9 項）
 tests/check_site.py     ← Playwright 網站檢查（55 項）
 package.json            ← npm 指令（build / lint / test / serve）
 .nvmrc                  ← Node 版本 22
+.github/workflows/deploy-pages.yml ← GitHub Actions：build 並部署到 GitHub Pages
 README.md               ← 一般說明
 AI讀取修正檔.md          ← 本檔案
 ```
@@ -169,33 +171,45 @@ git pull                                  # 先同步最新版本
 npm run build && npm run lint && npm test # 檢查
 git add .
 git commit -m "簡短說明這次改了什麼"
-git push                                  # push 到 main 後 Cloudflare Pages 自動部署
+git push                                  # push 到 main 後 GitHub Actions 自動部署到 GitHub Pages
 ```
 
 - Commit 前先看 `git status`，確認沒有 `node_modules/`、`dist/`、`screenshots/`、`.env`。
 - 較大的改版建議先開分支（例如 `git checkout -b update/xxx`），確認沒問題再合併到 main。
 
-### Cloudflare Pages 設定
+### GitHub Pages 部署設定
+部署流程：Claude Code → GitHub Repository → GitHub Actions → GitHub Pages
+
 | 設定 | 值 |
 |---|---|
-| Framework preset | None |
+| 正式網站 | https://k5star.github.io/tamsui-kanding-parking/ |
 | Production branch | `main` |
+| Workflow | `.github/workflows/deploy-pages.yml`（GitHub Actions 自動部署） |
+| Node.js | `22` |
+| 安裝 | `npm ci` |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
-| 環境變數 | `NODE_VERSION=22`；正式網域確定後加 `SITE_URL=https://正式網域` |
+| Build output | `dist/` |
+| 觸發 | 每次 push 到 `main` 後自動重新部署 GitHub Pages |
+| HTTPS | 由 GitHub Pages 提供 |
+
+push 後可到 GitHub repo 的 Actions 頁面確認「Deploy to GitHub Pages」執行成功。
 
 ### SITE_URL
-- 未設定：不輸出 canonical、og:url、og:image、Schema url、sitemap.xml（避免錯誤網址）。
-- 已設定：`build.py` 自動產生上述全部內容，並在 robots.txt 加入 Sitemap。
-- 本機測試：`SITE_URL=https://parking.example.com npm run build`（Windows PowerShell：`$env:SITE_URL="https://parking.example.com"; npm run build`）。
+- 正式 build：`SITE_URL=https://k5star.github.io/tamsui-kanding-parking`（GitHub Actions 自動從 GitHub Pages 取得並設定，不需手動設定）。
+- 正式 build 會產生：canonical、og:url、og:image、Schema URL、sitemap.xml，並在 robots.txt 加入 Sitemap。
+- 未設定：不輸出上述內容（避免錯誤網址）。
+- 本機測試：`SITE_URL=https://k5star.github.io/tamsui-kanding-parking npm run build`（Windows PowerShell：`$env:SITE_URL="https://k5star.github.io/tamsui-kanding-parking"; npm run build`）。
+
+### Cloudflare
+目前未使用 Cloudflare。未來若需要自訂網域，可另外設定，不影響目前 GitHub Pages 部署。
 
 ---
 
 ## 9. 目前待辦（TODO）
 
-- [ ] 在 Cloudflare Pages 連結 GitHub repo 並完成第一次部署
-- [ ] 綁定正式網域，設定 `SITE_URL` 後重新部署
-- [ ] Google Ads 到達網頁與顯示網址改為正式網域，重新送審
+- [x] 透過 GitHub Actions 部署到 GitHub Pages（https://k5star.github.io/tamsui-kanding-parking/ ，已設定 `SITE_URL`）
+- [ ] （選用）如需自訂網域，另外設定並更新 `SITE_URL` 後重新部署
+- [ ] Google Ads 到達網頁與顯示網址改為正式網址，重新送審
 - [ ] 確認電話、經緯度、營業時間後，加入 JSON-LD 與頁面
 - [ ] 景點圖片換成實拍照片
 - [ ] 與現場公告核對月租與 ATM 付款資訊

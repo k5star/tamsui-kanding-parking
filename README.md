@@ -49,24 +49,43 @@ npm test             # 需要 Python Playwright 與 Chromium：pip install playw
 
 ## Deployment
 
-**Cloudflare Pages**（連結此 GitHub repo，自動 build / deploy）
+**GitHub Pages**（透過 GitHub Actions 自動 build / deploy）
+
+正式網站：https://k5star.github.io/tamsui-kanding-parking/
+
+部署流程：Claude Code → GitHub Repository → GitHub Actions → GitHub Pages
 
 | 設定 | 值 |
 |---|---|
-| Framework preset | None |
 | Production branch | `main` |
+| Workflow | `.github/workflows/deploy-pages.yml` |
+| Node.js | `22`（`.nvmrc` 亦已指定） |
+| 安裝 | `npm ci` |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
-| 環境變數 `NODE_VERSION` | `22`（`.nvmrc` 亦已指定） |
-| 環境變數 `SITE_URL` | 正式網址確定後填入，例如 `https://parking.example.com` |
+| Build output | `dist/` |
+| 觸發 | 每次 push 到 `main` 後自動重新部署 GitHub Pages（也可在 Actions 頁面手動執行） |
+| HTTPS | 由 GitHub Pages 提供 |
 
 ### SITE_URL
 
-正式網址目前尚未決定。
+正式 build 使用：
 
-- 未設定 `SITE_URL`：不輸出 canonical、og:url、og:image、Schema url、sitemap.xml（避免錯誤網址）。
-- 設定後（`SITE_URL=https://parking.example.com npm run build`）：自動產生以上全部，並在 robots.txt 加入 Sitemap。
+```
+SITE_URL=https://k5star.github.io/tamsui-kanding-parking
+```
 
-設定好 `SITE_URL` 後，需在 Cloudflare Pages 重新部署一次。
+GitHub Actions 會自動從 GitHub Pages 取得實際網址並設定 `SITE_URL`，不需要手動設定。正式 build 會產生：
+
+- canonical
+- og:url
+- og:image
+- Schema URL
+- sitemap.xml（robots.txt 也會加入 Sitemap）
+
+未設定 `SITE_URL`（例如本機 `npm run build`）時，以上內容都不會輸出，避免錯誤網址。
+
+### Cloudflare
+
+目前未使用 Cloudflare。未來若需要自訂網域，可另外設定，不影響目前 GitHub Pages 部署。
 
 > 實際停車費率、付款方式及相關規定，以現場最新公告為準。
