@@ -16,7 +16,7 @@
 | GitHub | https://github.com/k5star/tamsui-kanding-parking （Public） |
 | 正式網站 | https://k5star.github.io/tamsui-kanding-parking/ （GitHub Pages） |
 | 正式分支 | `main`（push 到 main 會觸發 GitHub Actions 自動部署到 GitHub Pages） |
-| 技術 | 純靜態 HTML + CSS，無框架，頁面不需要 JavaScript |
+| 技術 | 純靜態 HTML + CSS，無框架，頁面只有 Google tag（gtag.js）與點擊追蹤的 JavaScript |
 | 建置 | `npm run build` → 執行 `python3 build.py` → 輸出 `dist/` |
 | 主要使用者 | 開車到淡水遊玩的旅客，**手機優先（Mobile First）** |
 
@@ -53,7 +53,7 @@ src/index.html          ← 唯一頁面，所有內容、CSS、JSON-LD 都在�
 src/assets/img/         ← 圖片（WebP / AVIF）；map-original.png 是原始素材，不會輸出
 build.py                ← 建置腳本：src/ → dist/，處理 SITE_URL、robots.txt、sitemap.xml、_headers
 tests/check_build.py    ← SITE_URL 建置測試（9 項）
-tests/check_site.py     ← Playwright 網站檢查（55 項）
+tests/check_site.py     ← Playwright 網站檢查（59 項）
 package.json            ← npm 指令（build / lint / test / serve）
 .nvmrc                  ← Node 版本 22
 .github/workflows/deploy-pages.yml ← GitHub Actions：build 並部署到 GitHub Pages
@@ -151,7 +151,7 @@ CSS 寫在 `<head>` 的 `<style>` 中，顏色使用 `:root` 的 CSS 變數（�
 npm install          # 第一次或 package.json 變動時
 npm run build        # 必須成功產生 dist/
 npm run lint         # 必須 0 錯誤
-npm test             # 必須全部通過（目前 9 + 55 項）
+npm test             # 必須全部通過（目前 9 + 59 項）
 npm run serve        # 開 http://localhost:8080 目視確認
 ```
 
@@ -214,7 +214,8 @@ push 後可到 GitHub repo 的 Actions 頁面確認「Deploy to GitHub Pages」�
 - [ ] 景點圖片換成實拍照片
 - [ ] 與現場公告核對月租與 ATM 付款資訊
 - [ ] 上線後確認嵌入的 Google 地圖標記位置正確
-- [ ] 如需追蹤廣告成效，加入 GA4 / Google Ads 轉換追蹤（需使用者提供 ID）
+- [x] Google tag（GA4 `G-QYMW7KGRLY`）與點擊事件：`parking_navigation_click`（6 個導航按鈕，參數 button_name / link_text / destination / page_location）；`parking_phone_click`、`parking_contact_click` 已預先支援 `tel:`、LINE（line.me / lin.ee）、`mailto:` 連結，目前網站尚無這類按鈕
+- [ ] Google Ads 轉換：連結 GA4 與 Google Ads 後匯入 `parking_navigation_click`，或提供 Google Ads 的 Conversion ID（AW-…）與 Conversion Label
 
 完成任何一項後，請在這裡打勾並更新說明。
 

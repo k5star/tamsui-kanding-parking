@@ -3,6 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYMW7KGRLY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QYMW7KGRLY');
+
+  // 點擊追蹤（導航／電話／LINE・聯絡）：只送出事件，不攔截、不改變連結原本行為
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.href, name;
+    if (/^https:\/\/(maps\.app\.goo\.gl|(www\.)?google\.[a-z.]+\/maps)/.test(href)) name = 'parking_navigation_click';
+    else if (href.indexOf('tel:') === 0) name = 'parking_phone_click';
+    else if (/^https?:\/\/(line\.me|lin\.ee)\//.test(href) || href.indexOf('mailto:') === 0) name = 'parking_contact_click';
+    else return;
+    var where = a.closest('.mbar') ? 'mobile_sticky_bar' : a.closest('.site-header') ? 'header'
+      : a.closest('.hero') ? 'hero' : a.closest('#sunset') ? 'sunset_section'
+      : a.closest('#map') ? 'map_section' : a.closest('footer') ? 'footer' : 'other';
+    gtag('event', name, {
+      button_name: where,
+      link_text: a.textContent.replace(/\s+/g, ' ').trim(),
+      destination: href,
+      page_location: location.href
+    });
+  });
+</script>
 <title>淡水崁頂五路停車場｜淡水夕陽・觀海長堤附近停車</title>
 <meta name="description" content="淡水崁頂五路停車場，鄰近淡水海岸、觀海長堤及自行車道。提供平價停車、每日最高80元，適合看海、賞夕陽、騎自行車及淡水旅遊停車。">
 <meta name="robots" content="index, follow, max-image-preview:large">

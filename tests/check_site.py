@@ -67,6 +67,19 @@ with sync_playwright() as p:
     check(len(ld) == 2 and ld[1]['@type'] == 'FAQPage' and len(ld[1]['mainEntity']) == 5, 'JSON-LD valid (ParkingFacility + FAQPage)')
     check(not any(k in ld[0] for k in ('telephone', 'geo', 'openingHours', 'aggregateRating')), 'JSON-LD has no unverified fields')
     check(pg.locator('h1').count() == 1, 'single h1')
+    # Google tag + click tracking: one event per click, links keep their href/target
+    check(pg.locator('script[src*="googletagmanager.com/gtag/js"]').count() == 1, 'Google tag included once')
+    ev = pg.evaluate('''()=>{window.addEventListener('click',e=>e.preventDefault());
+        const out=[];
+        document.querySelectorAll('a[href]').forEach(a=>{const i=dataLayer.length;a.click();
+            const evs=dataLayer.slice(i).filter(x=>x[0]==='event'), l=evs[0]||[];
+            out.push({href:a.getAttribute('href'),sent:evs.length,name:l[1],btn:l[2]&&l[2].button_name,target:a.target});});
+        return out;}''')
+    nav = [e for e in ev if e['href'] == MAPS]
+    check(len(nav) == 6 and all(e['sent'] == 1 and e['name'] == 'parking_navigation_click' and e['target'] == '_blank' for e in nav),
+          f'parking_navigation_click once per Maps link ({len(nav)} links)')
+    check(len({e['btn'] for e in nav}) == len(nav), f'navigation button_name unique {[e["btn"] for e in nav]}')
+    check(all(e['sent'] == 0 for e in ev if e['href'] != MAPS), 'no tracking events for in-page links')
     b.close()
 srv.shutdown()
 print('\n'.join(report + fails)); print(f'\n{len(report)} passed, {len(fails)} failed')
